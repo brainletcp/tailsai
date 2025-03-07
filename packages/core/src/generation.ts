@@ -496,6 +496,13 @@ export async function generateText({
                                 model;
                         }
                         break;
+                    case ModelClass.MEDIUM:
+                        {
+                            model =
+                                runtime.getSetting("MEDIUM_OPENROUTER_MODEL") ||
+                                model;
+                        }
+                        break;
                     case ModelClass.SMALL:
                         {
                             model =
@@ -1715,7 +1722,7 @@ export async function generateMessageResponse({
                 context,
                 modelClass,
             });
-
+            
             // try parsing the response as JSON, if null then try again
             const parsedContent = parseJSONObjectFromText(response) as Content;
             if (!parsedContent) {

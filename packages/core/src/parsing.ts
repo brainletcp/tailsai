@@ -1,7 +1,8 @@
 import type { ActionResponse } from "./types.ts";
+import { elizaLogger } from "./logger.ts";
 const jsonBlockPattern = /```json\n([\s\S]*?)\n```/;
 
-export const messageCompletionFooter = `\nResponse format should be formatted in a valid JSON block like this:
+export const messageCompletionFooter = `\nResponse format should be formatted in a valid JSON block like this, NOTHING ELSE. No explanation or message please:
 \`\`\`json
 { "user": "{{agentName}}", "text": "<string>", "action": "<string>" }
 \`\`\`
@@ -151,8 +152,8 @@ export function parseJSONObjectFromText(
         try {
             jsonData = JSON.parse(parsingText);
         } catch (e) {
-            console.error("Error parsing JSON:", e);
-            console.error("Text is not JSON", text);
+            elizaLogger.error("Error parsing JSON:", e);
+            elizaLogger.error("Text is not JSON", text);
             return extractAttributes(text);
         }
     } else {
