@@ -65,7 +65,7 @@ async function handler(
     const response = await generateText({
         runtime,
         context,
-        modelClass: ModelClass.LARGE,
+        modelClass: ModelClass.SMALL,
     });
 
     // Parse the JSON response to extract goal updates
