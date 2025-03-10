@@ -1540,6 +1540,7 @@ export enum ServiceType {
     WEB_SEARCH = "web_search",
     EMAIL_AUTOMATION = "email_automation",
     NKN_CLIENT_SERVICE = "nkn_client_service",
+    YIELD_DATA = "yield_data"
 }
 
 export enum LoggingLevel {
